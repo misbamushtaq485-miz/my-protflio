@@ -1,0 +1,32 @@
+.container{
+    width: 100%;
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    border: 2px solid red;
+    margin: 10px;
+    width: 500px;
+}
+
+input{
+    margin: 20px;
+    width: 90%;
+    height: 34px;
+    padding: 10px;
+}
+
+.btn{
+    margin: 20px;
+    padding: 10px;
+    background: blue;
+    color: aliceblue;
+    font-size: 30px;
+    font-weight: 600;
+}
