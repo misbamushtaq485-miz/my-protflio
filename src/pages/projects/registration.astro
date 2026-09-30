@@ -1,559 +1,609 @@
 ---
 import {
   ArrowLeft,
-  GraduationCap,
-  Sparkles,
+  ArrowRight,
+  BookOpen,
   CircleCheck,
-  RotateCcw,
-  User,
+  GraduationCap,
   Mail,
+  RotateCcw,
   ShieldCheck,
-  BookOpen
+  Sparkles,
+  User,
 } from "@lucide/astro";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import Reveal from "../../components/Reveal.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import Carousel from "../../components/Carousel.astro";
+import Icon from "../../components/Icon.astro";
+
+const facts = [
+  { label: "Role", value: "Front-end design & logic" },
+  { label: "Stack", value: "HTML5 · Tailwind · JS DOM" },
+  { label: "Focus", value: "Accessibility & live feedback" },
+  { label: "Year", value: "2025" },
+];
+
+const takeaways = [
+  {
+    icon: "Code",
+    title: "Semantic form architecture",
+    desc: "Descriptive labels, grouped fieldsets, required attributes and autocomplete tokens measurably improve the screen-reader experience.",
+  },
+  {
+    icon: "Zap",
+    title: "Reactive client-side DOM",
+    desc: "Binding input and change events to one centralised update function keeps UI state honest without reaching for a framework.",
+  },
+  {
+    icon: "Accessibility",
+    title: "Error prevention over error messages",
+    desc: "Validating before submit and giving contextual, friendly feedback stops silent failures before they frustrate anyone.",
+  },
+  {
+    icon: "Layers",
+    title: "Preview as documentation",
+    desc: "A live ID card makes abstract form data tangible — users see exactly what the system captured from them.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Student Registration Portal | Project by Misba Mushtaq"
-  description="An interactive student intake and registration system with real-time field validation, semantic input grouping, and live preview card."
+  title={`Student Registration Portal | Project by Misba Mushtaq`}
+  description="An interactive student intake and registration system with real-time field validation, semantic input grouping and a live digital ID preview."
   path="/projects/registration/"
 >
   <div id="top"></div>
   <Header compact />
 
-  <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-16 space-y-10">
-    
-    <!-- Top Navigation Bar -->
-    <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl glass-card">
-      <a
-        href="/#work"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-      >
-        <ArrowLeft class="w-4 h-4" />
-        <span>Back to Projects</span>
-      </a>
+  <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 space-y-14 sm:space-y-20">
+    <!-- Breadcrumb -->
+    <Reveal variant="down">
+      <div class="card rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <a
+          href="/#work"
+          class="inline-flex items-center gap-2 text-sm font-semibold soft hover:text-brand transition-colors"
+        >
+          <ArrowLeft class="w-4 h-4" />
+          Back to projects
+        </a>
+        <span class="chip chip-brand">Project 01 · Interactive web application</span>
+      </div>
+    </Reveal>
 
-      <div class="flex items-center gap-2">
-        <span class="px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs font-semibold">
-          Project 01 &bull; Interactive Web Application
+    <!-- Hero -->
+    <section class="space-y-8">
+      <Reveal variant="up" class="space-y-5 max-w-3xl">
+        <span class="eyebrow">
+          <GraduationCap class="w-3.5 h-3.5" />
+          Academic case study
         </span>
-      </div>
-    </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          Student Registration
+          <span class="text-gradient">Portal.</span>
+        </h1>
+        <p class="text-base sm:text-lg soft leading-relaxed">
+          A student intake interface built to explore semantic form structures,
+          real-time client validation, accessible fieldsets and a preview card that
+          stays in sync with every keystroke.
+        </p>
+      </Reveal>
 
-    <!-- Project Hero Header -->
-    <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-4">
-      <div class="flex flex-wrap items-center gap-2">
-        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-          <GraduationCap class="w-4 h-4" />
-          Academic Case Study
-        </span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
-        Student Registration Portal
-      </h1>
-      <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-3xl leading-relaxed">
-        A hands-on student intake interface built to explore semantic form structures, real-time client validation, accessible fieldsets, and synchronous live card generation.
-      </p>
-
-      <div class="pt-4 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800">
-        <div><strong class="text-zinc-900 dark:text-zinc-100">Role:</strong> Front-End Design & Logic</div>
-        <div>&bull;</div>
-        <div><strong class="text-zinc-900 dark:text-zinc-100">Stack:</strong> HTML5, Tailwind CSS, JavaScript DOM</div>
-        <div>&bull;</div>
-        <div><strong class="text-zinc-900 dark:text-zinc-100">Focus:</strong> Accessibility & Real-time Feedback</div>
-      </div>
-    </div>
-
-    <!-- Interactive Workspace Grid (Form on Left, Live ID Preview on Right) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Left Column: The Registration Form -->
-      <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
-        <div class="border-b border-zinc-200 dark:border-zinc-800 pb-4">
-          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Student Enrollment Form
-          </h2>
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-            Fill in the details below. As you type, the digital ID card preview updates automatically.
-          </p>
+      <Reveal variant="up" delay={120}>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {
+            facts.map((fact) => (
+              <div class="card rounded-2xl p-5 space-y-1">
+                <p class="text-[10px] font-bold uppercase tracking-[0.16em] muted">
+                  {fact.label}
+                </p>
+                <p class="text-sm font-semibold">{fact.value}</p>
+              </div>
+            ))
+          }
         </div>
+      </Reveal>
+    </section>
 
-        <form id="student-reg-form" class="space-y-6" novalidate>
-          
-          <!-- Section 1: Personal Details -->
-          <div class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
-              <User class="w-3.5 h-3.5" />
-              1. Personal Information
-            </h3>
+    <!-- Workspace -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Form -->
+      <Reveal variant="left" class="lg:col-span-7">
+        <div class="card rounded-3xl p-6 sm:p-8 space-y-7">
+          <div class="pb-4 border-b">
+            <h2 class="font-display text-xl font-bold">Student enrolment form</h2>
+            <p class="text-xs muted mt-1">
+              Fill in the details — the digital ID card beside it updates as you type.
+            </p>
+          </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label for="first-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  First Name <span class="text-rose-500">*</span>
-                </label>
-                <input
-                  id="first-name"
-                  name="firstName"
-                  type="text"
-                  required
-                  placeholder="e.g. Ayesha"
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                />
-              </div>
+          <form id="student-reg-form" class="space-y-7" novalidate>
+            <!-- Personal -->
+            <fieldset class="space-y-4">
+              <legend class="form-step">
+                <User class="w-3.5 h-3.5" />
+                1. Personal information
+              </legend>
 
-              <div class="space-y-1">
-                <label for="last-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Last Name <span class="text-rose-500">*</span>
-                </label>
-                <input
-                  id="last-name"
-                  name="lastName"
-                  type="text"
-                  required
-                  placeholder="e.g. Khan"
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label for="dob" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Date of Birth <span class="text-rose-500">*</span>
-                </label>
-                <input
-                  id="dob"
-                  name="dob"
-                  type="date"
-                  required
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                />
-              </div>
-
-              <div class="space-y-1">
-                <label class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Gender <span class="text-rose-500">*</span>
-                </label>
-                <div class="grid grid-cols-3 gap-2 pt-1">
-                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <input type="radio" name="gender" value="Female" checked class="text-indigo-600 focus:ring-indigo-500" />
-                    <span>Female</span>
-                  </label>
-                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <input type="radio" name="gender" value="Male" class="text-indigo-600 focus:ring-indigo-500" />
-                    <span>Male</span>
-                  </label>
-                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <input type="radio" name="gender" value="Other" class="text-indigo-600 focus:ring-indigo-500" />
-                    <span>Other</span>
-                  </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="first-name">First name *</label>
+                  <input
+                    class="field"
+                    id="first-name"
+                    name="firstName"
+                    type="text"
+                    required
+                    autocomplete="given-name"
+                    placeholder="e.g. Ayesha"
+                  />
+                </div>
+                <div>
+                  <label class="field-label" for="last-name">Last name *</label>
+                  <input
+                    class="field"
+                    id="last-name"
+                    name="lastName"
+                    type="text"
+                    required
+                    autocomplete="family-name"
+                    placeholder="e.g. Khan"
+                  />
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Section 2: Academic Program Selection -->
-          <div class="space-y-4 pt-2 border-t border-zinc-200 dark:border-zinc-800">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
-              <BookOpen class="w-3.5 h-3.5" />
-              2. Academic Program
-            </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="dob">Date of birth *</label>
+                  <input class="field" id="dob" name="dob" type="date" required />
+                </div>
+                <div>
+                  <span class="field-label">Gender *</span>
+                  <div class="grid grid-cols-3 gap-2">
+                    {
+                      ["Female", "Male", "Other"].map((option, i) => (
+                        <label class="radio-tile">
+                          <input
+                            type="radio"
+                            name="gender"
+                            value={option}
+                            checked={i === 0}
+                          />
+                          <span>{option}</span>
+                        </label>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </fieldset>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label for="course" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Diploma Discipline <span class="text-rose-500">*</span>
-                </label>
-                <select
-                  id="course"
-                  name="course"
-                  required
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                >
-                  <option value="Information Technology">Information Technology</option>
-                  <option value="Computer Engineering">Computer Engineering</option>
-                  <option value="Electronics & Communication">Electronics & Communication</option>
-                  <option value="Civil Engineering">Civil Engineering</option>
-                  <option value="Mechanical Engineering">Mechanical Engineering</option>
-                </select>
+            <!-- Academic -->
+            <fieldset class="space-y-4 pt-5 border-t">
+              <legend class="form-step">
+                <BookOpen class="w-3.5 h-3.5" />
+                2. Academic programme
+              </legend>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="course">Diploma discipline *</label>
+                  <select class="field" id="course" name="course" required>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Electronics & Communication">
+                      Electronics & Communication
+                    </option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="semester">Admission semester *</label>
+                  <select class="field" id="semester" name="semester" required>
+                    <option value="1st Semester">1st Semester (fresh intake)</option>
+                    <option value="3rd Semester (Lateral)">3rd Semester (lateral)</option>
+                    <option value="5th Semester" selected>5th Semester (senior)</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Contact -->
+            <fieldset class="space-y-4 pt-5 border-t">
+              <legend class="form-step">
+                <Mail class="w-3.5 h-3.5" />
+                3. Contact & address
+              </legend>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="reg-email">Email address *</label>
+                  <input
+                    class="field"
+                    id="reg-email"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="student@example.com"
+                  />
+                </div>
+                <div>
+                  <label class="field-label" for="reg-phone">Phone number *</label>
+                  <input
+                    class="field"
+                    id="reg-phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    pattern="[0-9 +()-]{7,18}"
+                    autocomplete="tel"
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
               </div>
 
-              <div class="space-y-1">
-                <label for="semester" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Admission Semester <span class="text-rose-500">*</span>
-                </label>
-                <select
-                  id="semester"
-                  name="semester"
-                  required
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                >
-                  <option value="1st Semester">1st Semester (Fresh Intake)</option>
-                  <option value="3rd Semester (Lateral)">3rd Semester (Lateral Entry)</option>
-                  <option value="5th Semester" selected>5th Semester (Senior)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Section 3: Contact & Address -->
-          <div class="space-y-4 pt-2 border-t border-zinc-200 dark:border-zinc-800">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
-              <Mail class="w-3.5 h-3.5" />
-              3. Contact & Address
-            </h3>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label for="reg-email" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Email Address <span class="text-rose-500">*</span>
-                </label>
+              <div>
+                <label class="field-label" for="reg-address">Residential address *</label>
                 <input
-                  id="reg-email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="student@example.com"
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                />
-              </div>
-
-              <div class="space-y-1">
-                <label for="reg-phone" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  Phone Number <span class="text-rose-500">*</span>
-                </label>
-                <input
-                  id="reg-phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  pattern="[0-9 +()-]{7,18}"
-                  placeholder="+91 98765 43210"
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                />
-              </div>
-            </div>
-
-            <div class="space-y-1">
-              <label for="reg-address" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                Residential Street Address <span class="text-rose-500">*</span>
-              </label>
-              <input
-                id="reg-address"
-                name="address"
-                type="text"
-                required
-                placeholder="House No, Ward, Street area"
-                class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-              />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label for="reg-city" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  City / Town <span class="text-rose-500">*</span>
-                </label>
-                <input
-                  id="reg-city"
-                  name="city"
+                  class="field"
+                  id="reg-address"
+                  name="address"
                   type="text"
                   required
-                  placeholder="e.g. Srinagar"
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                  autocomplete="street-address"
+                  placeholder="House no, ward, street area"
                 />
               </div>
 
-              <div class="space-y-1">
-                <label for="reg-state" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  State / UT <span class="text-rose-500">*</span>
-                </label>
-                <select
-                  id="reg-state"
-                  name="state"
-                  required
-                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
-                >
-                  <option value="Jammu & Kashmir" selected>Jammu & Kashmir</option>
-                  <option value="Delhi">Delhi NCR</option>
-                  <option value="Punjab">Punjab</option>
-                  <option value="Himachal Pradesh">Himachal Pradesh</option>
-                  <option value="Other">Other Region</option>
-                </select>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="reg-city">City / town *</label>
+                  <input
+                    class="field"
+                    id="reg-city"
+                    name="city"
+                    type="text"
+                    required
+                    placeholder="e.g. Srinagar"
+                  />
+                </div>
+                <div>
+                  <label class="field-label" for="reg-state">State / UT *</label>
+                  <select class="field" id="reg-state" name="state" required>
+                    <option value="Jammu & Kashmir" selected>Jammu & Kashmir</option>
+                    <option value="Delhi">Delhi NCR</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Other">Other region</option>
+                  </select>
+                </div>
               </div>
+            </fieldset>
+
+            <div class="flex flex-wrap items-center gap-3 pt-5 border-t">
+              <button type="submit" class="btn btn-primary">
+                <CircleCheck class="w-4 h-4" />
+                Submit registration
+              </button>
+              <button type="reset" class="btn btn-ghost">
+                <RotateCcw class="w-4 h-4" />
+                Clear form
+              </button>
             </div>
-          </div>
 
-          <!-- Form Buttons -->
-          <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-            <button
-              type="submit"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-md shadow-indigo-600/30 active:scale-95 transition-all"
+            <div
+              id="form-notification"
+              class="hidden"
+              role="status"
+              aria-live="polite"
             >
-              <CircleCheck class="w-4 h-4" />
-              <span>Submit Registration</span>
-            </button>
+            </div>
+          </form>
+        </div>
+      </Reveal>
 
-            <button
-              type="reset"
-              id="reset-form-btn"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-sm transition-all"
-            >
-              <RotateCcw class="w-4 h-4" />
-              <span>Clear Form</span>
-            </button>
-          </div>
-
-          <!-- Form Validation Feedback Message -->
-          <div id="form-notification" class="hidden p-4 rounded-2xl text-xs sm:text-sm transition-all" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-
-      <!-- Right Column: Live Digital Student ID Card Preview -->
-      <div class="lg:col-span-5 space-y-6 sticky top-24">
-        
-        <div class="glass-card p-6 rounded-3xl space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-              <Sparkles class="w-4 h-4" />
-              Live ID Card Preview
+      <!-- Live preview -->
+      <Reveal variant="right" delay={100} class="lg:col-span-5 lg:sticky lg:top-28">
+        <div class="card rounded-3xl p-6 space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="eyebrow">
+              <Sparkles class="w-3.5 h-3.5" />
+              Live ID preview
             </span>
-            <span id="preview-badge" class="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-medium">
-              Draft Mode
+            <span
+              id="preview-badge"
+              class="chip text-amber-600 dark:text-amber-400 bg-amber-500/10"
+            >
+              Draft mode
             </span>
           </div>
 
-          <!-- The Rendered Card -->
-          <div class="relative rounded-2xl bg-gradient-to-br from-indigo-700 via-indigo-800 to-slate-900 text-white p-6 shadow-2xl overflow-hidden border border-white/10">
-            <!-- Decorative Background Watermark -->
+          <div
+            class="relative rounded-2xl p-6 text-white overflow-hidden border border-white/10 shadow-2xl"
+            style="background:linear-gradient(140deg,#312e81,#4c1d95 45%,#0b1020)"
+          >
             <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
               <GraduationCap class="w-48 h-48" />
             </div>
 
-            <!-- Header of ID -->
-            <div class="flex items-center justify-between pb-4 border-b border-white/15 relative z-10">
+            <div class="relative flex items-center justify-between pb-4 border-b border-white/15">
               <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-lg bg-white/15 backdrop-blur-md flex items-center justify-center font-bold text-sm">
+                <span class="w-8 h-8 rounded-lg grid place-items-center bg-white/15 font-bold text-xs">
                   KGP
-                </div>
-                <div>
-                  <p class="text-xs font-bold uppercase tracking-wider text-white">Polytechnic Institute</p>
-                  <p class="text-[10px] text-zinc-300">Srinagar, Kashmir</p>
-                </div>
+                </span>
+                <span>
+                  <span class="block text-[11px] font-bold uppercase tracking-wider">
+                    Polytechnic Institute
+                  </span>
+                  <span class="block text-[10px] text-white/60">Srinagar, Kashmir</span>
+                </span>
               </div>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/20 font-mono">
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/15 font-mono">
                 2026-REG
               </span>
             </div>
 
-            <!-- Main Body of ID -->
-            <div class="pt-5 space-y-4 relative z-10">
+            <div class="relative pt-5 space-y-4">
               <div class="flex items-start gap-4">
-                <div class="w-16 h-16 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xl text-white shrink-0 shadow-inner">
-                  <span id="card-avatar-initials">ST</span>
-                </div>
-                <div class="space-y-0.5">
-                  <p class="text-[11px] text-indigo-200 font-semibold uppercase tracking-wider">Candidate Name</p>
-                  <p id="card-name" class="font-extrabold text-lg text-white">
+                <span
+                  class="w-16 h-16 rounded-xl grid place-items-center bg-white/10 border border-white/20 font-bold text-xl shrink-0"
+                  id="card-avatar-initials">AK</span
+                >
+                <div class="space-y-0.5 min-w-0">
+                  <p class="text-[10px] uppercase tracking-[0.14em] text-white/60 font-semibold">
+                    Candidate name
+                  </p>
+                  <p id="card-name" class="font-display font-extrabold text-lg truncate">
                     Ayesha Khan
                   </p>
-                  <p id="card-course" class="text-xs text-zinc-200">
+                  <p id="card-course" class="text-xs text-white/75">
                     Information Technology
                   </p>
                 </div>
               </div>
 
-              <!-- Key Info Grid on Card -->
-              <div class="grid grid-cols-2 gap-2 pt-3 border-t border-white/10 text-xs">
+              <div class="grid grid-cols-2 gap-3 pt-3 border-t border-white/10 text-xs">
                 <div>
-                  <span class="text-[10px] text-indigo-200 block">Semester</span>
-                  <span id="card-semester" class="font-semibold text-white">5th Semester</span>
+                  <span class="block text-[10px] text-white/55">Semester</span>
+                  <span id="card-semester" class="font-semibold">5th Semester</span>
                 </div>
                 <div>
-                  <span class="text-[10px] text-indigo-200 block">Location</span>
-                  <span id="card-city" class="font-semibold text-white">Srinagar, J&K</span>
+                  <span class="block text-[10px] text-white/55">Location</span>
+                  <span id="card-city" class="font-semibold">Srinagar, Jammu &amp; Kashmir</span>
                 </div>
-                <div class="col-span-2">
-                  <span class="text-[10px] text-indigo-200 block">Contact Email</span>
-                  <span id="card-email" class="font-mono text-[11px] text-zinc-200 truncate block">student@example.com</span>
+                <div class="col-span-2 min-w-0">
+                  <span class="block text-[10px] text-white/55">Contact email</span>
+                  <span id="card-email" class="font-mono text-[11px] text-white/85 truncate block">
+                    student@example.com
+                  </span>
                 </div>
               </div>
             </div>
 
-            <!-- Footer Bar of Card -->
-            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-300 relative z-10">
-              <span class="flex items-center gap-1">
+            <div class="relative mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-white/70">
+              <span class="inline-flex items-center gap-1">
                 <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
-                Verified Registration Token
+                Verified registration token
               </span>
-              <span class="font-mono text-zinc-400" id="card-id-code">ID: #9482-IT</span>
+              <span class="font-mono" id="card-id-code">ID: #9482-IT</span>
             </div>
           </div>
 
-          <p class="text-xs text-zinc-500 dark:text-zinc-400 text-center leading-relaxed">
-            This card is dynamically bound to the form inputs via JavaScript event listeners.
+          <p class="text-[11px] muted text-center leading-relaxed">
+            The card is bound to the form through a single DOM update function —
+            no framework, no re-render cycle.
           </p>
         </div>
+      </Reveal>
+    </section>
 
+    <!-- Takeaways carousel -->
+    <section class="space-y-10">
+      <SectionHeading
+        eyebrow="Technical takeaways"
+        eyebrowIcon="Sparkles"
+        title="What building this"
+        accent="actually taught me."
+        note="Four lessons that changed how I approach forms."
+      />
+
+      <Reveal variant="up">
+        <Carousel label="Project takeaways" variant="trio" autoplay={5500} loop counter={false}>
+          {
+            takeaways.map((item, i) => (
+              <article class="carousel__slide">
+                <div class="card card-lift spotlight rounded-3xl p-6 h-full space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="w-11 h-11 rounded-2xl grid place-items-center tint-brand">
+                      <Icon name={item.icon} class="w-5 h-5" />
+                    </span>
+                    <span class="font-mono text-xs muted">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 class="font-display font-bold text-lg leading-tight">
+                    {item.title}
+                  </h3>
+                  <p class="text-sm muted leading-relaxed">{item.desc}</p>
+                </div>
+              </article>
+            ))
+          }
+        </Carousel>
+      </Reveal>
+    </section>
+
+    <!-- Next -->
+    <Reveal variant="up">
+      <div class="card rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-1.5">
+          <p class="eyebrow">Keep exploring</p>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold">
+            See the rest of the portfolio
+          </h2>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="/#work" class="btn btn-ghost">All projects</a>
+          <a href="/resume/" class="btn btn-primary group">
+            View resume
+            <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </div>
       </div>
-
-    </div>
-
-    <!-- Case Study Insights & Takeaways -->
-    <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-6">
-      <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-        <Sparkles class="w-4 h-4" />
-        Technical Takeaways & Learnings
-      </span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-        What building this project taught me.
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
-          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-            <CircleCheck class="w-4 h-4 text-indigo-500" />
-            Semantic Form Architecture
-          </h3>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Structuring inputs with descriptive labels, fieldsets, required attributes, and proper autocomplete tokens dramatically improves accessibility for screen readers.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
-          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-            <CircleCheck class="w-4 h-4 text-sky-500" />
-            Reactive Client-Side DOM
-          </h3>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Binding input and change events to a centralized update function creates responsive UI states that assure the user that their data is captured accurately.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
-          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-            <CircleCheck class="w-4 h-4 text-emerald-500" />
-            User Error Prevention
-          </h3>
-          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Checking validity before submitting and giving friendly contextual feedback prevents silent failures and reduces user frustration.
-          </p>
-        </div>
-      </div>
-    </div>
-
+    </Reveal>
   </main>
 
   <Footer />
 </BaseLayout>
 
+<style>
+  .form-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 0.25rem;
+  }
+
+  .radio-tile {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(var(--line) / var(--line-alpha));
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .radio-tile:hover {
+    border-color: color-mix(in oklab, var(--brand) 45%, transparent);
+  }
+  .radio-tile:has(input:checked) {
+    background: color-mix(in oklab, var(--brand) 12%, transparent);
+    border-color: color-mix(in oklab, var(--brand) 55%, transparent);
+    color: var(--brand);
+  }
+  .radio-tile input {
+    accent-color: var(--brand);
+  }
+
+  #form-notification:not(.hidden) {
+    display: block;
+    padding: 1rem 1.15rem;
+    border-radius: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    background: color-mix(in oklab, #10b981 14%, transparent);
+    border: 1px solid color-mix(in oklab, #10b981 35%, transparent);
+  }
+</style>
+
 <script>
   function setupRegistrationApp() {
     const form = document.getElementById("student-reg-form") as HTMLFormElement | null;
-    const notification = document.getElementById("form-notification");
-    const previewBadge = document.getElementById("preview-badge");
-
-    // Preview elements
-    const cardName = document.getElementById("card-name");
-    const cardCourse = document.getElementById("card-course");
-    const cardSemester = document.getElementById("card-semester");
-    const cardCity = document.getElementById("card-city");
-    const cardEmail = document.getElementById("card-email");
-    const cardAvatarInitials = document.getElementById("card-avatar-initials");
-    const cardIdCode = document.getElementById("card-id-code");
-
-    if (!form) return;
-
-    // Guard against multiple bindings
-    if (form.hasAttribute("data-bound")) return;
+    if (!form || form.hasAttribute("data-bound")) return;
     form.setAttribute("data-bound", "true");
 
+    const el = (id: string) => document.getElementById(id);
+    const notification = el("form-notification");
+    const previewBadge = el("preview-badge");
+    const cardName = el("card-name");
+    const cardCourse = el("card-course");
+    const cardSemester = el("card-semester");
+    const cardCity = el("card-city");
+    const cardEmail = el("card-email");
+    const cardInitials = el("card-avatar-initials");
+    const cardId = el("card-id-code");
+
+    const draftBadge = "chip text-amber-600 dark:text-amber-400 bg-amber-500/10";
+    const doneBadge = "chip text-emerald-600 dark:text-emerald-400 bg-emerald-500/10";
+
     function updatePreview() {
-      if (!form) return;
-      const data = new FormData(form);
+      const data = new FormData(form as HTMLFormElement);
       const first = String(data.get("firstName") || "").trim();
       const last = String(data.get("lastName") || "").trim();
-      const fullName = (first || last) ? `${first} ${last}`.trim() : "Ayesha Khan";
-      const course = String(data.get("course") || "Information Technology");
-      const semester = String(data.get("semester") || "5th Semester");
-      const city = String(data.get("city") || "Srinagar");
-      const state = String(data.get("state") || "Jammu & Kashmir");
-      const email = String(data.get("email") || "student@example.com");
+      const fullName = first || last ? `${first} ${last}`.trim() : "Ayesha Khan";
 
       if (cardName) cardName.textContent = fullName;
-      if (cardCourse) cardCourse.textContent = course;
-      if (cardSemester) cardSemester.textContent = semester;
-      if (cardCity) cardCity.textContent = `${city}, ${state}`;
-      if (cardEmail) cardEmail.textContent = email;
-
-      // Initials
-      const initials = (first ? first[0] : "S") + (last ? last[0] : "T");
-      if (cardAvatarInitials) cardAvatarInitials.textContent = initials.toUpperCase();
+      if (cardCourse)
+        cardCourse.textContent = String(data.get("course") || "Information Technology");
+      if (cardSemester)
+        cardSemester.textContent = String(data.get("semester") || "5th Semester");
+      if (cardCity)
+        cardCity.textContent = `${String(data.get("city") || "Srinagar")}, ${String(
+          data.get("state") || "Jammu & Kashmir"
+        )}`;
+      if (cardEmail)
+        cardEmail.textContent = String(data.get("email") || "student@example.com");
+      if (cardInitials)
+        cardInitials.textContent = (
+          (first ? first[0] : "A") + (last ? last[0] : "K")
+        ).toUpperCase();
     }
 
-    // Attach real-time input listeners
     form.addEventListener("input", updatePreview);
     form.addEventListener("change", updatePreview);
 
-    // Form submission
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
       const data = new FormData(form);
-      const name = data.get("firstName") || "Student";
-      const course = data.get("course");
+      const name = String(data.get("firstName") || "Student");
+      const course = String(data.get("course") || "");
       const randomId = Math.floor(1000 + Math.random() * 9000);
 
-      if (cardIdCode) cardIdCode.textContent = `ID: #${randomId}-IT`;
-
+      if (cardId) cardId.textContent = `ID: #${randomId}-IT`;
       if (previewBadge) {
-        previewBadge.textContent = "Verified & Enrolled";
-        previewBadge.className = "px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-semibold";
+        previewBadge.textContent = "Verified & enrolled";
+        previewBadge.className = doneBadge;
       }
-
       if (notification) {
-        notification.className = "p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-sm space-y-1 block";
-        notification.innerHTML = `
-          <p class="font-bold flex items-center gap-1.5">
-            <span>🎉 Registration Successful!</span>
-          </p>
-          <p>
-            Welcome, <strong>${name}</strong>. Your enrollment record in <strong>${course}</strong> has been logged into the demo system with ID <strong>#${randomId}-IT</strong>.
-          </p>
-        `;
+        notification.classList.remove("hidden");
+        notification.replaceChildren();
+        const lead = document.createElement("strong");
+        lead.textContent = "Registration successful. ";
+        notification.append(
+          lead,
+          document.createTextNode(
+            `Welcome, ${name}. Your enrolment in ${course} has been logged in the demo system with ID #${randomId}-IT.`
+          )
+        );
         notification.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     });
 
-    // Form reset
     form.addEventListener("reset", () => {
-      setTimeout(() => {
+      window.setTimeout(() => {
         updatePreview();
         if (notification) {
-          notification.className = "hidden";
-          notification.innerHTML = "";
+          notification.classList.add("hidden");
+          notification.replaceChildren();
         }
         if (previewBadge) {
-          previewBadge.textContent = "Draft Mode";
-          previewBadge.className = "px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-medium";
+          previewBadge.textContent = "Draft mode";
+          previewBadge.className = draftBadge;
         }
-      }, 50);
+      }, 40);
     });
 
-    // Initial sync
     updatePreview();
   }
 
   document.addEventListener("astro:page-load", setupRegistrationApp);
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    setupRegistrationApp();
-  }
+  if (document.readyState !== "loading") setupRegistrationApp();
 </script>

@@ -1,268 +1,244 @@
 ---
-import { Menu, X, ArrowUpRight, Send, House, User, Code, Layers, Calendar, Mail, FileText } from "@lucide/astro";
+import { Menu, X, ArrowUpRight, Send, House, FileText } from "@lucide/astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import Icon from "./Icon.astro";
+import { navItems, profile } from "../data/portfolio";
 
 interface Props {
   compact?: boolean;
 }
 
 const { compact = false } = Astro.props;
+const prefix = compact ? "/" : "";
 ---
 
-<header class="sticky top-3 sm:top-5 z-50 w-full px-3 sm:px-6 max-w-6xl mx-auto transition-all duration-300">
-  <div class="glass-card rounded-2xl sm:rounded-full px-3.5 sm:px-6 py-2 sm:py-3 shadow-lg shadow-black/5 dark:shadow-black/25 flex items-center justify-between transition-all">
+<header class="sticky top-3 sm:top-5 z-50 w-full px-3 sm:px-6 max-w-6xl mx-auto" data-site-header>
+  <div
+    class="card rounded-2xl sm:rounded-full px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-3"
+    data-header-shell
+  >
     <!-- Brand -->
     <a
       href={compact ? "/" : "#top"}
-      class="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink-0"
-      aria-label="Misba Mushtaq Portfolio Home"
+      class="group flex items-center gap-2.5 shrink-0 rounded-full"
+      aria-label={`${profile.name} — home`}
     >
-      <div
-        class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-sky-500 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center shadow-md shadow-indigo-500/30 group-hover:scale-105 transition-transform"
+      <span
+        class="relative w-9 h-9 rounded-xl grid place-items-center text-white text-[11px] font-extrabold tracking-wider overflow-hidden"
+        style="background:linear-gradient(135deg,var(--brand),var(--accent-2))"
         transition:name="site-brand-logo"
       >
-        MM
-      </div>
-      <div class="flex flex-col">
-        <span class="font-bold text-sm sm:text-base tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-          Misba Mushtaq
+        {profile.initials}
+        <span class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+      </span>
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="brand-name font-display font-bold text-sm tracking-tight transition-colors">
+          {profile.name}
         </span>
-        <span class="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 hidden sm:inline-block leading-tight">
-          IT Student & Developer
+        <span class="text-[10px] font-medium muted hidden sm:block">
+          {profile.shortRole}
         </span>
-      </div>
+      </span>
     </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-1 text-sm font-medium" aria-label="Main Desktop Navigation">
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="Sections">
       {
-        compact ? (
-          <>
-            <a href="/" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Home
-            </a>
-            <a href="/#about" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              About
-            </a>
-            <a href="/#skills" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Skills
-            </a>
-            <a href="/#work" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Projects
-            </a>
-            <a href="/resume/" class="px-3.5 py-1.5 rounded-full text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 font-semibold transition-all">
-              Resume
-            </a>
-          </>
-        ) : (
-          <>
-            <a href="#about" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              About
-            </a>
-            <a href="#skills" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Skills
-            </a>
-            <a href="#work" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Work
-            </a>
-            <a href="#journey" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Journey
-            </a>
-            <a href="#contact" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all">
-              Contact
-            </a>
-            <a href="/resume/" class="px-3.5 py-1.5 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 transition-all inline-flex items-center gap-1">
-              Resume
-              <ArrowUpRight class="w-3.5 h-3.5 opacity-70" />
-            </a>
-          </>
+        compact && (
+          <a href="/" class="nav-link" data-nav-link>
+            Home
+          </a>
         )
       }
+      {
+        navItems.map((item) => (
+          <a
+            href={`${prefix}${item.href}`}
+            class="nav-link"
+            data-nav-link
+            aria-current="false"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href="/resume/"
+        class="nav-link inline-flex items-center gap-1"
+        aria-current={compact ? "true" : "false"}
+      >
+        Resume
+        <ArrowUpRight class="w-3.5 h-3.5 opacity-60" />
+      </a>
     </nav>
 
-    <!-- Header Actions (Theme Toggle & Mobile Menu Button) -->
-    <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+    <!-- Actions -->
+    <div class="flex items-center gap-2 shrink-0">
+      <span
+        class="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
+      >
+        <span class="relative flex w-1.5 h-1.5">
+          <span class="absolute inset-0 rounded-full bg-emerald-400 animate-ring"></span>
+          <span class="relative w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        </span>
+        Open to work
+      </span>
+
       <ThemeToggle />
 
       <a
-        href="mailto:misbamushtaq485@gmail.com"
-        class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-sm shadow-indigo-600/30 active:scale-95 transition-all"
+        href={`${prefix}#contact`}
+        class="btn btn-primary btn-sm hidden sm:inline-flex"
       >
-        <span>Say Hello</span>
+        Say hello
         <Send class="w-3.5 h-3.5" />
       </a>
 
-      <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
         type="button"
-        class="md:hidden flex items-center justify-center w-9 h-9 rounded-full text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white bg-zinc-200/80 dark:bg-zinc-800/80 border border-zinc-300/80 dark:border-zinc-700/80 transition-all focus:outline-none"
-        aria-label="Toggle Navigation Menu"
+        class="lg:hidden grid place-items-center w-9 h-9 rounded-full border bg-[rgb(var(--line)/0.35)] transition-colors"
+        aria-label="Toggle navigation"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <span id="menu-icon-wrapper" class="block">
-          <Menu class="w-4 h-4" />
-        </span>
-        <span id="close-icon-wrapper" class="hidden">
-          <X class="w-4 h-4" />
-        </span>
+        <span id="menu-icon-wrapper"><Menu class="w-4 h-4" /></span>
+        <span id="close-icon-wrapper" class="hidden"><X class="w-4 h-4" /></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Dropdown Panel -->
+  <!-- Mobile sheet -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden mt-2 p-4 rounded-2xl glass-card shadow-2xl border border-zinc-200/90 dark:border-zinc-800/90 transition-all animate-in fade-in zoom-in-95 duration-200"
+    class="hidden lg:hidden mt-2 card rounded-2xl p-3 overflow-hidden"
     role="dialog"
-    aria-label="Mobile Navigation"
+    aria-label="Navigation"
   >
-    <nav class="flex flex-col gap-1.5 text-sm font-medium">
-      <a
-        href="/"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <House class="w-4 h-4 text-zinc-400" />
+    <nav class="flex flex-col gap-1">
+      <a href="/" class="mobile-nav-link">
+        <House class="w-4 h-4 muted" />
         <span>Home</span>
       </a>
-
-      <a
-        href="/#about"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <User class="w-4 h-4 text-zinc-400" />
-        <span>About</span>
+      {
+        navItems.map((item) => (
+          <a href={`${prefix}${item.href}`} class="mobile-nav-link">
+            <Icon name={item.icon} class="w-4 h-4 muted" />
+            <span>{item.label}</span>
+          </a>
+        ))
+      }
+      <a href="/projects/registration/" class="mobile-nav-link mobile-nav-sub">
+        <span>Student Registration Portal</span>
       </a>
 
-      <a
-        href="/#skills"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <Code class="w-4 h-4 text-zinc-400" />
-        <span>Skills & Toolkit</span>
-      </a>
-
-      <a
-        href="/#work"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <Layers class="w-4 h-4 text-zinc-400" />
-        <span>Projects & Demos</span>
-      </a>
-
-      <a
-        href="/projects/registration/"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors pl-8 text-xs text-zinc-600 dark:text-zinc-400"
-      >
-        <span>&bull; Student Registration Portal</span>
-      </a>
-
-      <a
-        href="/#journey"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <Calendar class="w-4 h-4 text-zinc-400" />
-        <span>Journey & Milestones</span>
-      </a>
-
-      <a
-        href="/#contact"
-        class="mobile-nav-link flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 transition-colors"
-      >
-        <Mail class="w-4 h-4 text-zinc-400" />
-        <span>Contact Me</span>
-      </a>
-
-      <div class="my-1 border-t border-zinc-200/80 dark:border-zinc-800/80"></div>
+      <div class="my-1.5 border-t"></div>
 
       <a
         href="/resume/"
-        class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-semibold transition-colors"
+        class="mobile-nav-link tint-brand font-semibold justify-between"
       >
         <span class="flex items-center gap-3">
-          <FileText class="w-4 h-4 text-indigo-500" />
-          <span>Curriculum Vitae / Resume</span>
+          <FileText class="w-4 h-4" />
+          Resume / CV
         </span>
-        <ArrowUpRight class="w-4 h-4 opacity-70" />
+        <ArrowUpRight class="w-4 h-4 opacity-60" />
       </a>
 
-      <a
-        href="mailto:misbamushtaq485@gmail.com"
-        class="mt-2 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/30 active:scale-95 transition-all"
-      >
-        <span>Say Hello</span>
+      <a href={`mailto:${profile.email}`} class="btn btn-primary mt-2 w-full">
+        Say hello
         <Send class="w-4 h-4" />
       </a>
     </nav>
   </div>
 </header>
 
+<style>
+  [data-header-shell] {
+    transition: padding 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+  }
+  [data-site-header][data-scrolled="true"] [data-header-shell] {
+    box-shadow: var(--shadow-float);
+    background: rgb(var(--surface) / 0.9);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.85rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-soft);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  .mobile-nav-link:hover {
+    background: rgb(var(--line) / 0.35);
+    color: var(--text);
+  }
+  .mobile-nav-sub {
+    padding-left: 2.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .group:hover .brand-name {
+    color: var(--brand);
+  }
+</style>
+
 <script>
   function setupHeader() {
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
     const btn = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
-    const menuWrapper = document.getElementById("menu-icon-wrapper");
-    const closeWrapper = document.getElementById("close-icon-wrapper");
+    const menuIcon = document.getElementById("menu-icon-wrapper");
+    const closeIcon = document.getElementById("close-icon-wrapper");
+
+    if (header && !header.hasAttribute("data-scroll-bound")) {
+      header.setAttribute("data-scroll-bound", "true");
+      const onScroll = () => {
+        header.dataset.scrolled = String(window.scrollY > 24);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
 
     if (!btn || !menu) return;
-
-    // Guard against multiple bindings on view transitions / fast loads
     if (btn.hasAttribute("data-header-bound")) return;
     btn.setAttribute("data-header-bound", "true");
 
-    function setMenuOpen(open: boolean) {
-      if (!menu || !btn) return;
-      if (open) {
-        menu.classList.remove("hidden");
-        menuWrapper?.classList.add("hidden");
-        menuWrapper?.classList.remove("block");
-        closeWrapper?.classList.remove("hidden");
-        closeWrapper?.classList.add("block");
-        btn.setAttribute("aria-expanded", "true");
-      } else {
-        menu.classList.add("hidden");
-        menuWrapper?.classList.remove("hidden");
-        menuWrapper?.classList.add("block");
-        closeWrapper?.classList.add("hidden");
-        closeWrapper?.classList.remove("block");
-        btn.setAttribute("aria-expanded", "false");
-      }
-    }
+    const setOpen = (open: boolean) => {
+      menu.classList.toggle("hidden", !open);
+      menuIcon?.classList.toggle("hidden", open);
+      closeIcon?.classList.toggle("hidden", !open);
+      btn.setAttribute("aria-expanded", String(open));
+    };
 
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const isCurrentlyOpen = !menu.classList.contains("hidden");
-      setMenuOpen(!isCurrentlyOpen);
+      setOpen(menu.classList.contains("hidden"));
     });
 
-    // Close when clicking any link inside the mobile menu
-    menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        setMenuOpen(false);
-      });
-    });
+    menu.querySelectorAll(".mobile-nav-link").forEach((link) =>
+      link.addEventListener("click", () => setOpen(false))
+    );
 
-    // Close on click outside
     document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement | null;
-      if (target && !menu.contains(target) && !btn.contains(target) && !menu.classList.contains("hidden")) {
-        setMenuOpen(false);
-      }
+      const t = e.target as Node | null;
+      if (!t) return;
+      if (!menu.contains(t) && !btn.contains(t)) setOpen(false);
     });
 
-    // Close on Escape key press
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !menu.classList.contains("hidden")) {
-        setMenuOpen(false);
-        btn.focus();
-      }
+      if (e.key !== "Escape") return;
+      if (menu.classList.contains("hidden")) return;
+      setOpen(false);
+      btn.focus();
     });
   }
 
-  // Ensure initialization on every View Transitions swap and initial load
   document.addEventListener("astro:page-load", setupHeader);
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    setupHeader();
-  }
+  if (document.readyState !== "loading") setupHeader();
 </script>

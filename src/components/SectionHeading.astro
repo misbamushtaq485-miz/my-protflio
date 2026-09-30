@@ -1,0 +1,61 @@
+---
+import Icon from "./Icon.astro";
+import Reveal from "./Reveal.astro";
+
+interface Props {
+  eyebrow: string;
+  eyebrowIcon?: string;
+  title: string;
+  accent?: string;
+  note?: string;
+  id?: string;
+  align?: "split" | "center";
+}
+
+const {
+  eyebrow,
+  eyebrowIcon = "Sparkles",
+  title,
+  accent,
+  note,
+  id,
+  align = "split",
+} = Astro.props;
+---
+
+{
+  align === "center" ? (
+    <Reveal class="max-w-2xl mx-auto text-center space-y-4">
+      <span class="eyebrow justify-center">
+        <Icon name={eyebrowIcon} class="w-3.5 h-3.5" />
+        {eyebrow}
+      </span>
+      <h2 id={id} class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1]">
+        {title}{" "}
+        {accent && <span class="text-gradient">{accent}</span>}
+      </h2>
+      {note && <p class="text-sm sm:text-base muted leading-relaxed">{note}</p>}
+    </Reveal>
+  ) : (
+    <Reveal class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-7 border-b">
+      <div class="space-y-3 max-w-2xl">
+        <span class="eyebrow">
+          <Icon name={eyebrowIcon} class="w-3.5 h-3.5" />
+          {eyebrow}
+        </span>
+        <h2
+          id={id}
+          class="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.12]"
+        >
+          {title}{" "}
+          {accent && <span class="text-gradient">{accent}</span>}
+        </h2>
+      </div>
+      {note && (
+        <p class="text-sm muted leading-relaxed max-w-xs lg:text-right shrink-0">
+          {note}
+        </p>
+      )}
+    </Reveal>
+  )
+}

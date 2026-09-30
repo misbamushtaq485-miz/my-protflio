@@ -1,0 +1,36 @@
+---
+/**
+ * Seamless infinite marquee. The item list is rendered twice so the
+ * -100% translate loop has no visible seam.
+ */
+interface Props {
+  items: readonly string[];
+  reverse?: boolean;
+  duration?: number;
+  class?: string;
+}
+
+const { items, reverse = false, duration = 34, class: className = "" } = Astro.props;
+const rows = [0, 1];
+---
+
+<div
+  class:list={["marquee", reverse && "marquee--reverse", className]}
+  style={`--marquee-duration:${duration}s`}
+  aria-hidden="true"
+>
+  {
+    rows.map(() => (
+      <ul class="marquee__track">
+        {items.map((item) => (
+          <li class="shrink-0">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs sm:text-sm font-semibold whitespace-nowrap soft surface-soft backdrop-blur-sm">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:var(--brand)"></span>
+              {item}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ))
+  }
+</div>

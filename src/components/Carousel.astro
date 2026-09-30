@@ -1,0 +1,85 @@
+---
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+
+/**
+ * Dependency-free carousel: CSS scroll-snap for the track, JS for arrows,
+ * dots, drag, keyboard and autoplay (see src/scripts/enhance.ts).
+ */
+interface Props {
+  label: string;
+  variant?: "peek" | "trio" | "full";
+  autoplay?: number;
+  loop?: boolean;
+  dots?: boolean;
+  counter?: boolean;
+  rail?: boolean;
+  class?: string;
+}
+
+const {
+  label,
+  variant = "peek",
+  autoplay = 0,
+  loop = false,
+  dots = true,
+  counter = true,
+  rail = true,
+  class: className = "",
+} = Astro.props;
+
+const variantClass = variant === "full" ? "" : `carousel--${variant}`;
+---
+
+<div
+  class:list={["carousel", variantClass, className]}
+  data-carousel
+  data-autoplay={autoplay ? String(autoplay) : undefined}
+  data-loop={loop ? "true" : undefined}
+>
+  <div
+    class="carousel__viewport"
+    data-carousel-track
+    tabindex="0"
+    role="group"
+    aria-roledescription="carousel"
+    aria-label={label}
+  >
+    <slot />
+  </div>
+
+  <div class="mt-6 flex items-center gap-3 sm:gap-5">
+    <div class="flex items-center gap-2">
+      <button type="button" class="carousel__nav" data-carousel-prev aria-label={`Previous ${label} item`}>
+        <ChevronLeft class="w-4 h-4" />
+      </button>
+      <button type="button" class="carousel__nav" data-carousel-next aria-label={`Next ${label} item`}>
+        <ChevronRight class="w-4 h-4" />
+      </button>
+    </div>
+
+    {rail && <div class="carousel__rail flex-1 min-w-8" data-carousel-rail><span></span></div>}
+
+    {
+      dots && (
+        <div
+          class="hidden sm:flex items-center gap-2"
+          data-carousel-dots
+          role="tablist"
+          aria-label={`${label} pagination`}
+        />
+      )
+    }
+
+    {
+      counter && (
+        <span
+          class="font-mono text-xs muted tabular-nums shrink-0"
+          data-carousel-counter
+          aria-live="polite"
+        >
+          01
+        </span>
+      )
+    }
+  </div>
+</div>

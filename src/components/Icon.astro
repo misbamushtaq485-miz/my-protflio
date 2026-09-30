@@ -1,0 +1,99 @@
+---
+/**
+ * Renders a Lucide icon from a string name so content can live in data files.
+ */
+import {
+  Accessibility,
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  ArrowUpRight,
+  Atom,
+  Binary,
+  Boxes,
+  Brush,
+  Calendar,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  CircleCheck,
+  Code,
+  Compass,
+  Copy,
+  Database,
+  ExternalLink,
+  FileCode,
+  FileText,
+  FlaskConical,
+  Frame,
+  Gauge,
+  GitBranch,
+  GraduationCap,
+  Hammer,
+  Layers,
+  Mail,
+  MapPin,
+  Network,
+  Palette,
+  Rocket,
+  Send,
+  Sparkles,
+  Terminal,
+  User,
+  Zap,
+} from "@lucide/astro";
+
+interface Props {
+  name: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const registry: Record<string, any> = {
+  Accessibility,
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  ArrowUpRight,
+  Atom,
+  Binary,
+  Boxes,
+  Brush,
+  Calendar,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  CircleCheck,
+  Code,
+  Compass,
+  Copy,
+  Database,
+  ExternalLink,
+  FileCode,
+  FileText,
+  FlaskConical,
+  Frame,
+  Gauge,
+  GitBranch,
+  GraduationCap,
+  Hammer,
+  Layers,
+  Mail,
+  MapPin,
+  Network,
+  Palette,
+  Rocket,
+  Send,
+  Sparkles,
+  Terminal,
+  User,
+  Zap,
+};
+
+const { name, class: className = "w-5 h-5", ...rest } = Astro.props;
+const Glyph = registry[name] ?? Sparkles;
+---
+
+<Glyph class={className} {...rest} />
