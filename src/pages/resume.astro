@@ -1,0 +1,317 @@
+---
+import { Image } from "astro:assets";
+import {
+  Printer,
+  ArrowLeft,
+  Mail,
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Code,
+  FileCheck,
+  Sparkles,
+  ExternalLink,
+  Layers,
+  Languages,
+  CircleCheck
+} from "@lucide/astro";
+
+import LinkedInIcon from "../components/LinkedInIcon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import profileImage from "../../profile1.png";
+
+const technicalSkills = [
+  { group: "Front-End", items: ["HTML5 (Semantic & Accessible)", "CSS3 & Modern Layouts", "Tailwind CSS", "JavaScript (ES6+)", "Astro Framework"] },
+  { group: "Core Foundations", items: ["Data Structures Basics", "Computer Networks", "Database Management (DBMS)", "OOP Fundamentals"] },
+  { group: "Tools & Practices", items: ["Git & GitHub", "Vite", "PNPM", "Responsive Web Design", "View Transitions API"] },
+];
+
+const languages = [
+  { name: "English", level: "Professional working proficiency" },
+  { name: "Urdu", level: "Native / Bilingual proficiency" },
+  { name: "Kashmiri", level: "Native proficiency" },
+];
+---
+
+<BaseLayout
+  title="Resume | Misba Mushtaq - Information Technology & Frontend Developer"
+  description="Curriculum Vitae and background of Misba Mushtaq, an Information Technology student and frontend developer based in Srinagar, Kashmir."
+  path="/resume/"
+>
+  <div id="top"></div>
+  <Header compact />
+
+  <main id="main-content" class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-16 space-y-8">
+    
+    <!-- Top Action Bar (Print / Back) -->
+    <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl glass-card print:hidden">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+      >
+        <ArrowLeft class="w-4 h-4" />
+        <span>Back to Portfolio</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <button
+          id="print-resume-btn"
+          type="button"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-semibold shadow-md active:scale-95 transition-all"
+        >
+          <Printer class="w-4 h-4" />
+          <span>Print / Save as PDF</span>
+        </button>
+        <a
+          href="mailto:misbamushtaq485@gmail.com"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-md active:scale-95 transition-all"
+        >
+          <Mail class="w-4 h-4" />
+          <span>Contact Me</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Resume Document Sheet -->
+    <div class="glass-card print:bg-white print:text-black print:border-none print:shadow-none p-6 sm:p-12 rounded-3xl shadow-xl space-y-10 border border-zinc-200 dark:border-zinc-800">
+      
+      <!-- Resume Header Section -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-zinc-200 dark:border-zinc-800 print:border-zinc-300">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs font-semibold print:hidden">
+            <Sparkles class="w-3.5 h-3.5" />
+            Curriculum Vitae / 2026
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 print:text-black tracking-tight">
+            Misba Mushtaq
+          </h1>
+          <p class="text-base sm:text-lg font-medium text-indigo-600 dark:text-indigo-400 print:text-zinc-700">
+            Information Technology Student & Frontend Developer
+          </p>
+          <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 print:text-zinc-600 flex flex-wrap items-center gap-4 pt-1">
+            <span class="inline-flex items-center gap-1.5">
+              <MapPin class="w-3.5 h-3.5" />
+              Srinagar, Jammu & Kashmir, India
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <Mail class="w-3.5 h-3.5" />
+              misbamushtaq485@gmail.com
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <LinkedInIcon class="w-3.5 h-3.5" />
+              linkedin.com/in/misbajaan
+            </span>
+          </p>
+        </div>
+
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shadow-lg border-2 border-indigo-500/20 shrink-0 print:hidden">
+          <Image
+            src={profileImage}
+            alt="Misba Mushtaq"
+            width={240}
+            format="webp"
+            quality={85}
+            class="w-full h-full object-cover"
+            transition:name="profile-portrait"
+          />
+        </div>
+      </div>
+
+      <!-- Main Resume Grid (Sidebar + Main Content) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12">
+        
+        <!-- Left Column: Summary, Education, Experience, Projects -->
+        <div class="md:col-span-8 space-y-8">
+          
+          <!-- Professional Summary -->
+          <section class="space-y-3">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <FileCheck class="w-4 h-4" />
+              Profile Summary
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 print:text-zinc-800 leading-relaxed">
+              Motivated and detail-oriented 5th-semester Information Technology diploma student at Kashmir Government Polytechnic (KGP) Srinagar. Strong foundation in web development, accessible markup, responsive CSS, and modern JavaScript. Passionate about learning by doing, crafting user-friendly interfaces, and solving real-world challenges through elegant code.
+            </p>
+          </section>
+
+          <!-- Education Section -->
+          <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <GraduationCap class="w-4 h-4" />
+              Education
+            </h2>
+            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-1">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 print:text-black">
+                  Diploma in Information Technology
+                </h3>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 print:border print:border-zinc-400">
+                  Current &bull; 5th Semester
+                </span>
+              </div>
+              <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                Kashmir Government Polytechnic (KGP), Srinagar
+              </p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 pt-1 leading-relaxed">
+                Core coursework: Data Structures, Computer Networks, Database Management Systems (DBMS), Operating Systems, Software Engineering, and Web Development.
+              </p>
+            </div>
+          </section>
+
+          <!-- Practical Experience -->
+          <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Briefcase class="w-4 h-4" />
+              Practical Experience & Internship
+            </h2>
+            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-1">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 print:text-black">
+                  Software Development Intern
+                </h3>
+                <span class="text-xs text-zinc-500 font-medium">Hands-on Practice & Guided Labs</span>
+              </div>
+              <ul class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-2 list-disc list-inside">
+                <li>Designed and coded responsive, accessible user interfaces following modern web standards.</li>
+                <li>Engineered interactive client-side form validation using native JavaScript DOM APIs and semantic HTML5 attributes.</li>
+                <li>Applied version control best practices with Git and GitHub, managing repositories and collaborative code reviews.</li>
+                <li>Explored static-site optimization and component-driven architecture using Astro and Tailwind CSS.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Selected Projects -->
+          <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Layers class="w-4 h-4" />
+              Key Projects
+            </h2>
+
+            <div class="space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 print:text-black">
+                    Student Registration System
+                  </h3>
+                  <a href="/projects/registration/" class="text-xs text-indigo-600 dark:text-indigo-400 font-medium inline-flex items-center gap-1 hover:underline print:hidden">
+                    <span>View Project</span>
+                    <ExternalLink class="w-3 h-3" />
+                  </a>
+                </div>
+                <p class="text-xs text-zinc-500 font-medium">HTML5, Tailwind CSS, JavaScript DOM, Form Validation</p>
+                <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Interactive web application designed to collect and validate student admission data. Implements pattern checks, accessible fieldsets, live feedback toasts, and reset logic.
+                </p>
+              </div>
+
+              <div class="p-4 sm:p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 print:text-black">
+                    Personal Portfolio & Resume Platform
+                  </h3>
+                  <a href="/" class="text-xs text-indigo-600 dark:text-indigo-400 font-medium inline-flex items-center gap-1 hover:underline print:hidden">
+                    <span>View Project</span>
+                    <ExternalLink class="w-3 h-3" />
+                  </a>
+                </div>
+                <p class="text-xs text-zinc-500 font-medium">Astro 7, Tailwind CSS v4, Lucide Icons, View Transitions</p>
+                <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Static-first web portfolio featuring multi-theme management (Light/Dark/System), smooth page transitions, responsive glassmorphism aesthetic, and print stylesheet optimization.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column: Skills, Languages, Highlights -->
+        <div class="md:col-span-4 space-y-8">
+          
+          <!-- Technical Skills Breakdown -->
+          <section class="space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Code class="w-4 h-4" />
+              Technical Skills
+            </h2>
+            <div class="space-y-4">
+              {
+                technicalSkills.map((group) => (
+                  <div class="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-2">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 print:text-black">
+                      {group.group}
+                    </h3>
+                    <ul class="space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+                      {group.items.map((item) => (
+                        <li class="flex items-center gap-1.5">
+                          <CircleCheck class="w-3 h-3 text-indigo-500 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+
+          <!-- Languages -->
+          <section class="space-y-3">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Languages class="w-4 h-4" />
+              Languages
+            </h2>
+            <div class="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 print:border-zinc-300 space-y-2.5">
+              {
+                languages.map((lang) => (
+                  <div>
+                    <p class="text-xs font-bold text-zinc-800 dark:text-zinc-200 print:text-black">{lang.name}</p>
+                    <p class="text-[11px] text-zinc-500">{lang.level}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+
+          <!-- Soft Skills / Attributes -->
+          <section class="space-y-3">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Sparkles class="w-4 h-4" />
+              Core Competencies
+            </h2>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Fast Learner</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Attention to Detail</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Problem Solving</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Collaboration</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Web Performance</span>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  function setupResumeScripts() {
+    const printBtn = document.getElementById("print-resume-btn");
+    if (printBtn && !printBtn.hasAttribute("data-bound")) {
+      printBtn.setAttribute("data-bound", "true");
+      printBtn.addEventListener("click", () => {
+        window.print();
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", setupResumeScripts);
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setupResumeScripts();
+  }
+</script>

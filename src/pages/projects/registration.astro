@@ -1,0 +1,559 @@
+---
+import {
+  ArrowLeft,
+  GraduationCap,
+  Sparkles,
+  CircleCheck,
+  RotateCcw,
+  User,
+  Mail,
+  ShieldCheck,
+  BookOpen
+} from "@lucide/astro";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Student Registration Portal | Project by Misba Mushtaq"
+  description="An interactive student intake and registration system with real-time field validation, semantic input grouping, and live preview card."
+  path="/projects/registration/"
+>
+  <div id="top"></div>
+  <Header compact />
+
+  <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-16 space-y-10">
+    
+    <!-- Top Navigation Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl glass-card">
+      <a
+        href="/#work"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+      >
+        <ArrowLeft class="w-4 h-4" />
+        <span>Back to Projects</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs font-semibold">
+          Project 01 &bull; Interactive Web Application
+        </span>
+      </div>
+    </div>
+
+    <!-- Project Hero Header -->
+    <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+          <GraduationCap class="w-4 h-4" />
+          Academic Case Study
+        </span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+        Student Registration Portal
+      </h1>
+      <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-3xl leading-relaxed">
+        A hands-on student intake interface built to explore semantic form structures, real-time client validation, accessible fieldsets, and synchronous live card generation.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800">
+        <div><strong class="text-zinc-900 dark:text-zinc-100">Role:</strong> Front-End Design & Logic</div>
+        <div>&bull;</div>
+        <div><strong class="text-zinc-900 dark:text-zinc-100">Stack:</strong> HTML5, Tailwind CSS, JavaScript DOM</div>
+        <div>&bull;</div>
+        <div><strong class="text-zinc-900 dark:text-zinc-100">Focus:</strong> Accessibility & Real-time Feedback</div>
+      </div>
+    </div>
+
+    <!-- Interactive Workspace Grid (Form on Left, Live ID Preview on Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: The Registration Form -->
+      <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+        <div class="border-b border-zinc-200 dark:border-zinc-800 pb-4">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+            Student Enrollment Form
+          </h2>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            Fill in the details below. As you type, the digital ID card preview updates automatically.
+          </p>
+        </div>
+
+        <form id="student-reg-form" class="space-y-6" novalidate>
+          
+          <!-- Section 1: Personal Details -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <User class="w-3.5 h-3.5" />
+              1. Personal Information
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label for="first-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  First Name <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="first-name"
+                  name="firstName"
+                  type="text"
+                  required
+                  placeholder="e.g. Ayesha"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <label for="last-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Last Name <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="last-name"
+                  name="lastName"
+                  type="text"
+                  required
+                  placeholder="e.g. Khan"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label for="dob" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Date of Birth <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="dob"
+                  name="dob"
+                  type="date"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <label class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Gender <span class="text-rose-500">*</span>
+                </label>
+                <div class="grid grid-cols-3 gap-2 pt-1">
+                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                    <input type="radio" name="gender" value="Female" checked class="text-indigo-600 focus:ring-indigo-500" />
+                    <span>Female</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                    <input type="radio" name="gender" value="Male" class="text-indigo-600 focus:ring-indigo-500" />
+                    <span>Male</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                    <input type="radio" name="gender" value="Other" class="text-indigo-600 focus:ring-indigo-500" />
+                    <span>Other</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Academic Program Selection -->
+          <div class="space-y-4 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <BookOpen class="w-3.5 h-3.5" />
+              2. Academic Program
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label for="course" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Diploma Discipline <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="course"
+                  name="course"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                >
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Computer Engineering">Computer Engineering</option>
+                  <option value="Electronics & Communication">Electronics & Communication</option>
+                  <option value="Civil Engineering">Civil Engineering</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                </select>
+              </div>
+
+              <div class="space-y-1">
+                <label for="semester" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Admission Semester <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="semester"
+                  name="semester"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                >
+                  <option value="1st Semester">1st Semester (Fresh Intake)</option>
+                  <option value="3rd Semester (Lateral)">3rd Semester (Lateral Entry)</option>
+                  <option value="5th Semester" selected>5th Semester (Senior)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Contact & Address -->
+          <div class="space-y-4 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Mail class="w-3.5 h-3.5" />
+              3. Contact & Address
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label for="reg-email" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Email Address <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="reg-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="student@example.com"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <label for="reg-phone" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Phone Number <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="reg-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  pattern="[0-9 +()-]{7,18}"
+                  placeholder="+91 98765 43210"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label for="reg-address" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                Residential Street Address <span class="text-rose-500">*</span>
+              </label>
+              <input
+                id="reg-address"
+                name="address"
+                type="text"
+                required
+                placeholder="House No, Ward, Street area"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label for="reg-city" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  City / Town <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="reg-city"
+                  name="city"
+                  type="text"
+                  required
+                  placeholder="e.g. Srinagar"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <label for="reg-state" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  State / UT <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="reg-state"
+                  name="state"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                >
+                  <option value="Jammu & Kashmir" selected>Jammu & Kashmir</option>
+                  <option value="Delhi">Delhi NCR</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Other">Other Region</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+            <button
+              type="submit"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-md shadow-indigo-600/30 active:scale-95 transition-all"
+            >
+              <CircleCheck class="w-4 h-4" />
+              <span>Submit Registration</span>
+            </button>
+
+            <button
+              type="reset"
+              id="reset-form-btn"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-semibold text-sm transition-all"
+            >
+              <RotateCcw class="w-4 h-4" />
+              <span>Clear Form</span>
+            </button>
+          </div>
+
+          <!-- Form Validation Feedback Message -->
+          <div id="form-notification" class="hidden p-4 rounded-2xl text-xs sm:text-sm transition-all" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Right Column: Live Digital Student ID Card Preview -->
+      <div class="lg:col-span-5 space-y-6 sticky top-24">
+        
+        <div class="glass-card p-6 rounded-3xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+              <Sparkles class="w-4 h-4" />
+              Live ID Card Preview
+            </span>
+            <span id="preview-badge" class="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-medium">
+              Draft Mode
+            </span>
+          </div>
+
+          <!-- The Rendered Card -->
+          <div class="relative rounded-2xl bg-gradient-to-br from-indigo-700 via-indigo-800 to-slate-900 text-white p-6 shadow-2xl overflow-hidden border border-white/10">
+            <!-- Decorative Background Watermark -->
+            <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
+              <GraduationCap class="w-48 h-48" />
+            </div>
+
+            <!-- Header of ID -->
+            <div class="flex items-center justify-between pb-4 border-b border-white/15 relative z-10">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-white/15 backdrop-blur-md flex items-center justify-center font-bold text-sm">
+                  KGP
+                </div>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-white">Polytechnic Institute</p>
+                  <p class="text-[10px] text-zinc-300">Srinagar, Kashmir</p>
+                </div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/20 font-mono">
+                2026-REG
+              </span>
+            </div>
+
+            <!-- Main Body of ID -->
+            <div class="pt-5 space-y-4 relative z-10">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xl text-white shrink-0 shadow-inner">
+                  <span id="card-avatar-initials">ST</span>
+                </div>
+                <div class="space-y-0.5">
+                  <p class="text-[11px] text-indigo-200 font-semibold uppercase tracking-wider">Candidate Name</p>
+                  <p id="card-name" class="font-extrabold text-lg text-white">
+                    Ayesha Khan
+                  </p>
+                  <p id="card-course" class="text-xs text-zinc-200">
+                    Information Technology
+                  </p>
+                </div>
+              </div>
+
+              <!-- Key Info Grid on Card -->
+              <div class="grid grid-cols-2 gap-2 pt-3 border-t border-white/10 text-xs">
+                <div>
+                  <span class="text-[10px] text-indigo-200 block">Semester</span>
+                  <span id="card-semester" class="font-semibold text-white">5th Semester</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-indigo-200 block">Location</span>
+                  <span id="card-city" class="font-semibold text-white">Srinagar, J&K</span>
+                </div>
+                <div class="col-span-2">
+                  <span class="text-[10px] text-indigo-200 block">Contact Email</span>
+                  <span id="card-email" class="font-mono text-[11px] text-zinc-200 truncate block">student@example.com</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Bar of Card -->
+            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-300 relative z-10">
+              <span class="flex items-center gap-1">
+                <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+                Verified Registration Token
+              </span>
+              <span class="font-mono text-zinc-400" id="card-id-code">ID: #9482-IT</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 text-center leading-relaxed">
+            This card is dynamically bound to the form inputs via JavaScript event listeners.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Case Study Insights & Takeaways -->
+    <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+        <Sparkles class="w-4 h-4" />
+        Technical Takeaways & Learnings
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+        What building this project taught me.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <CircleCheck class="w-4 h-4 text-indigo-500" />
+            Semantic Form Architecture
+          </h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Structuring inputs with descriptive labels, fieldsets, required attributes, and proper autocomplete tokens dramatically improves accessibility for screen readers.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <CircleCheck class="w-4 h-4 text-sky-500" />
+            Reactive Client-Side DOM
+          </h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Binding input and change events to a centralized update function creates responsive UI states that assure the user that their data is captured accurately.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <CircleCheck class="w-4 h-4 text-emerald-500" />
+            User Error Prevention
+          </h3>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Checking validity before submitting and giving friendly contextual feedback prevents silent failures and reduces user frustration.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  function setupRegistrationApp() {
+    const form = document.getElementById("student-reg-form") as HTMLFormElement | null;
+    const notification = document.getElementById("form-notification");
+    const previewBadge = document.getElementById("preview-badge");
+
+    // Preview elements
+    const cardName = document.getElementById("card-name");
+    const cardCourse = document.getElementById("card-course");
+    const cardSemester = document.getElementById("card-semester");
+    const cardCity = document.getElementById("card-city");
+    const cardEmail = document.getElementById("card-email");
+    const cardAvatarInitials = document.getElementById("card-avatar-initials");
+    const cardIdCode = document.getElementById("card-id-code");
+
+    if (!form) return;
+
+    // Guard against multiple bindings
+    if (form.hasAttribute("data-bound")) return;
+    form.setAttribute("data-bound", "true");
+
+    function updatePreview() {
+      if (!form) return;
+      const data = new FormData(form);
+      const first = String(data.get("firstName") || "").trim();
+      const last = String(data.get("lastName") || "").trim();
+      const fullName = (first || last) ? `${first} ${last}`.trim() : "Ayesha Khan";
+      const course = String(data.get("course") || "Information Technology");
+      const semester = String(data.get("semester") || "5th Semester");
+      const city = String(data.get("city") || "Srinagar");
+      const state = String(data.get("state") || "Jammu & Kashmir");
+      const email = String(data.get("email") || "student@example.com");
+
+      if (cardName) cardName.textContent = fullName;
+      if (cardCourse) cardCourse.textContent = course;
+      if (cardSemester) cardSemester.textContent = semester;
+      if (cardCity) cardCity.textContent = `${city}, ${state}`;
+      if (cardEmail) cardEmail.textContent = email;
+
+      // Initials
+      const initials = (first ? first[0] : "S") + (last ? last[0] : "T");
+      if (cardAvatarInitials) cardAvatarInitials.textContent = initials.toUpperCase();
+    }
+
+    // Attach real-time input listeners
+    form.addEventListener("input", updatePreview);
+    form.addEventListener("change", updatePreview);
+
+    // Form submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const name = data.get("firstName") || "Student";
+      const course = data.get("course");
+      const randomId = Math.floor(1000 + Math.random() * 9000);
+
+      if (cardIdCode) cardIdCode.textContent = `ID: #${randomId}-IT`;
+
+      if (previewBadge) {
+        previewBadge.textContent = "Verified & Enrolled";
+        previewBadge.className = "px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-semibold";
+      }
+
+      if (notification) {
+        notification.className = "p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-sm space-y-1 block";
+        notification.innerHTML = `
+          <p class="font-bold flex items-center gap-1.5">
+            <span>🎉 Registration Successful!</span>
+          </p>
+          <p>
+            Welcome, <strong>${name}</strong>. Your enrollment record in <strong>${course}</strong> has been logged into the demo system with ID <strong>#${randomId}-IT</strong>.
+          </p>
+        `;
+        notification.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+
+    // Form reset
+    form.addEventListener("reset", () => {
+      setTimeout(() => {
+        updatePreview();
+        if (notification) {
+          notification.className = "hidden";
+          notification.innerHTML = "";
+        }
+        if (previewBadge) {
+          previewBadge.textContent = "Draft Mode";
+          previewBadge.className = "px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-medium";
+        }
+      }, 50);
+    });
+
+    // Initial sync
+    updatePreview();
+  }
+
+  document.addEventListener("astro:page-load", setupRegistrationApp);
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setupRegistrationApp();
+  }
+</script>
