@@ -1,0 +1,126 @@
+---
+import { ArrowUp, Mail, Sparkles } from "@lucide/astro";
+import LinkedInIcon from "./LinkedInIcon.astro";
+---
+
+<footer class="mt-20 border-t border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/60 dark:bg-zinc-950/60 backdrop-blur-md relative overflow-hidden transition-colors">
+  <!-- Subtle decorative light effect -->
+  <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[150px] bg-indigo-500/10 dark:bg-indigo-600/10 blur-[80px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12 pb-12 border-b border-zinc-200 dark:border-zinc-800/80">
+      
+      <!-- Brand & Mission Column -->
+      <div class="md:col-span-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-500 text-white font-extrabold text-xs flex items-center justify-center shadow-md shadow-indigo-500/30">
+            MM
+          </div>
+          <span class="font-bold text-lg text-zinc-900 dark:text-zinc-100">
+            Misba Mushtaq
+          </span>
+        </div>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 max-w-md leading-relaxed">
+          Information Technology student at KGP Srinagar, focused on turning theoretical ideas into resilient, responsive, and elegant digital interfaces.
+        </p>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Open to internships & frontend opportunities</span>
+        </div>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          Navigation
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/" class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/#about" class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              About Me
+            </a>
+          </li>
+          <li>
+            <a href="/#skills" class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              Toolkit & Skills
+            </a>
+          </li>
+          <li>
+            <a href="/#work" class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              Selected Work
+            </a>
+          </li>
+          <li>
+            <a href="/resume/" class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              View Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Connect Column -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          Connect
+        </h4>
+        <div class="flex flex-col gap-2.5 text-sm">
+          <a
+            href="mailto:misbamushtaq485@gmail.com"
+            class="inline-flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
+          >
+            <Mail class="w-4 h-4 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
+            <span>misbamushtaq485@gmail.com</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/misbajaan"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
+          >
+            <LinkedInIcon class="w-4 h-4 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
+            <span>linkedin.com/in/misbajaan</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+      <div class="flex items-center gap-1.5">
+        <span>Designed & built by Misba Mushtaq &bull; <span id="current-year">2026</span></span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1 text-zinc-400 dark:text-zinc-500">
+          <Sparkles class="w-3.5 h-3.5 text-indigo-500" />
+          Astro + Tailwind + Lucide
+        </span>
+
+        <a
+          href="#top"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-all hover:-translate-y-0.5"
+          aria-label="Back to top of page"
+        >
+          <span>Top</span>
+          <ArrowUp class="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setupFooter() {
+    const yearEl = document.querySelector("#current-year");
+    if (yearEl) {
+      yearEl.textContent = String(new Date().getFullYear());
+    }
+  }
+  setupFooter();
+  document.addEventListener("astro:page-load", setupFooter);
+</script>

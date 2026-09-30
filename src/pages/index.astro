@@ -1,0 +1,804 @@
+---
+import { Image } from "astro:assets";
+import {
+  Sparkles,
+  ArrowRight,
+  ArrowUpRight,
+  Mail,
+  Copy,
+  Check,
+  MapPin,
+  GraduationCap,
+  Code,
+  Palette,
+  Terminal,
+  Layers,
+  GitBranch,
+  ExternalLink,
+  Send,
+  Calendar,
+  CircleCheck,
+  Compass,
+  FileText
+} from "@lucide/astro";
+
+import LinkedInIcon from "../components/LinkedInIcon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import profileImage from "../../profile1.png";
+import registrationImage from "../../registration.png";
+import resumeImage from "../../resume.png";
+
+const skills = [
+  {
+    name: "HTML5 & Semantics",
+    category: "Frontend",
+    tag: "Core",
+    desc: "Accessible markup, semantic document structures, and clean SEO foundations.",
+    icon: Code
+  },
+  {
+    name: "CSS3 & Tailwind CSS",
+    category: "Styling",
+    tag: "Fluent",
+    desc: "Modern responsive layouts, flexbox, grid, glassmorphism, and theme variables.",
+    icon: Palette
+  },
+  {
+    name: "JavaScript (ES6+)",
+    category: "Frontend",
+    tag: "Core",
+    desc: "DOM manipulation, asynchronous events, form validation, and reactive logic.",
+    icon: Terminal
+  },
+  {
+    name: "Astro Framework",
+    category: "Framework",
+    tag: "Specialized",
+    desc: "Static-first architecture, component islands, and seamless View Transitions.",
+    icon: Layers
+  },
+  {
+    name: "Git & Version Control",
+    category: "Workflow",
+    tag: "Essential",
+    desc: "Branching workflows, commits, GitHub collaboration, and deployment pipelines.",
+    icon: GitBranch
+  },
+  {
+    name: "Responsive & UI Design",
+    category: "Design",
+    tag: "Focus",
+    desc: "Mobile-first philosophy, accessibility (a11y), and intuitive user flows.",
+    icon: Compass
+  }
+];
+
+const milestones = [
+  {
+    phase: "Current Status",
+    period: "2025 – 2026",
+    title: "Diploma in Information Technology",
+    place: "KGP Srinagar (5th Semester)",
+    desc: "Deepening theoretical and practical foundations in computing, database systems, networking, and software principles."
+  },
+  {
+    phase: "Active Practice",
+    period: "Ongoing",
+    title: "Front-End Development & Intern Projects",
+    place: "Self-driven & Practical Labs",
+    desc: "Engineering hands-on web applications, practicing responsive CSS systems, interactive DOM logic, and static site delivery."
+  },
+  {
+    phase: "Next Horizon",
+    period: "Forward Looking",
+    title: "Software Engineer",
+    place: "Web & Tech Industry",
+    desc: "Aspiring to design and scale impactful, human-centered software and web applications with a high standard of craftsmanship."
+  }
+];
+---
+
+<BaseLayout
+  title="Misba Mushtaq | IT Student & Frontend Web Developer"
+  description="Portfolio of Misba Mushtaq, an Information Technology student and web developer in Srinagar, Kashmir. Crafting modern, accessible, and high-performance websites."
+>
+  <div id="top"></div>
+  <Header />
+
+  <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 space-y-24 sm:space-y-32">
+    
+    <!-- Hero Section -->
+    <section class="relative pt-6 sm:pt-12 pb-8 sm:pb-16" aria-labelledby="hero-title">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+          
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-medium shadow-sm">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span>Available for internships & collaborations</span>
+          </div>
+
+          <!-- Main Headline -->
+          <div class="space-y-3">
+            <p class="text-sm sm:text-base font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+              <Sparkles class="w-4 h-4" />
+              Information Technology Student & Developer
+            </p>
+            <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.12]">
+              Building thoughtful, <br class="hidden sm:inline" />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-sky-500 to-indigo-500 dark:from-indigo-400 dark:via-sky-300 dark:to-indigo-300">
+                elegant & accessible
+              </span>
+              <br class="hidden sm:inline" />
+              web experiences.
+            </h1>
+          </div>
+
+          <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-xl">
+            Hi, I'm <strong class="text-zinc-900 dark:text-white font-semibold">Misba Mushtaq</strong>. Based in Srinagar, Kashmir, I combine technical fundamentals with a keen aesthetic eye to develop fast, user-centered digital applications.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+            <a
+              href="#work"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 active:scale-95 transition-all group"
+            >
+              <span>Explore My Work</span>
+              <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <a
+              href="/resume/"
+              class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 font-semibold text-sm sm:text-base shadow-sm hover:shadow transition-all group"
+            >
+              <FileText class="w-4 h-4 text-zinc-500 group-hover:text-indigo-500 transition-colors" />
+              <span>View Resume</span>
+              <ArrowUpRight class="w-4 h-4 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <!-- Quick Email Copy Widget -->
+            <button
+              id="copy-email-btn"
+              type="button"
+              class="inline-flex items-center gap-2 px-4 py-3 rounded-full text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-all focus:outline-none"
+              title="Copy email to clipboard"
+            >
+              <Copy id="copy-icon" class="w-4 h-4 text-indigo-500" />
+              <Check id="check-icon" class="w-4 h-4 text-emerald-500 hidden" />
+              <span id="copy-text">Copy email</span>
+            </button>
+          </div>
+
+          <!-- Mini Key Metrics -->
+          <div class="pt-4 grid grid-cols-3 gap-4 border-t border-zinc-200/80 dark:border-zinc-800/80 max-w-lg">
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">05</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Semester IT</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100">03+</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Core Projects</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">100%</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Commitment</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Portrait Showcase -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          
+          <!-- Outer Ambient Glow Ring -->
+          <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 via-sky-400/20 to-purple-500/20 rounded-3xl blur-2xl -z-10 animate-pulse-glow"></div>
+
+          <!-- Glass Portrait Frame -->
+          <div class="relative w-full max-w-[340px] sm:max-w-[380px] p-3 sm:p-4 rounded-3xl glass-card shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+            <div class="overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-800 aspect-[4/5] relative">
+              <Image
+                src={profileImage}
+                alt="Misba Mushtaq portrait"
+                widths={[360, 560, 720]}
+                sizes="(max-width: 640px) 320px, 380px"
+                format="webp"
+                quality={85}
+                loading="eager"
+                class="w-full h-full object-cover object-center"
+                transition:name="profile-portrait"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+
+              <!-- Overlay Badge inside Image -->
+              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-semibold">Misba Mushtaq</p>
+                  <p class="text-[11px] text-zinc-200">KGP Srinagar &bull; 5th Sem</p>
+                </div>
+                <div class="flex items-center gap-1 text-[11px] bg-emerald-500/80 px-2 py-0.5 rounded-full text-white font-medium">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                  Active
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badges outside Image -->
+            <div class="mt-3 flex items-center justify-between px-1 text-xs text-zinc-600 dark:text-zinc-400">
+              <span class="inline-flex items-center gap-1.5 font-medium">
+                <MapPin class="w-3.5 h-3.5 text-indigo-500" />
+                Srinagar, Kashmir
+              </span>
+              <span class="inline-flex items-center gap-1.5 font-medium">
+                <GraduationCap class="w-3.5 h-3.5 text-sky-500" />
+                Diploma in IT
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="scroll-mt-24 space-y-12" aria-labelledby="about-title">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+            <Compass class="w-4 h-4" />
+            Background & Mindset
+          </span>
+          <h2 id="about-title" class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-1">
+            I learn best by building real software.
+          </h2>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
+          Bridging technical concepts and visual clarity to craft seamless user experiences.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Story Card -->
+        <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+          <div class="space-y-4 text-zinc-700 dark:text-zinc-300 leading-relaxed text-base sm:text-lg">
+            <p>
+              I am currently enrolled in the <strong class="text-zinc-950 dark:text-white font-semibold">5th semester of the Information Technology Diploma program at Kashmir Government Polytechnic (KGP) Srinagar</strong>.
+            </p>
+            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              My curiosity for web technologies began with understanding how simple lines of markup and styling translate into vivid, interactive tools. Rather than simply consuming technology, I am driven by the urge to dissect how it functions under the hood.
+            </p>
+            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              Today, I specialize in front-end foundations: creating clean semantic HTML structures, crafting adaptive layouts with modern CSS and Tailwind, adding precise JavaScript interactions, and harnessing Astro for static-first web performance.
+            </p>
+          </div>
+
+          <!-- Highlight Pillars -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800/80">
+            <div class="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/50 text-center">
+              <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block">Accessibility</span>
+              <span class="text-[11px] text-zinc-500">Semantic & inclusive</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/50 text-center">
+              <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block">Performance</span>
+              <span class="text-[11px] text-zinc-500">Fast & static-first</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/50 text-center">
+              <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block">Modern UI</span>
+              <span class="text-[11px] text-zinc-500">Tailwind & glass</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/50 text-center">
+              <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block">Adaptability</span>
+              <span class="text-[11px] text-zinc-500">Rapid learner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Highlight Cards -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          <div class="glass-card p-6 rounded-3xl flex items-start gap-4 hover:border-indigo-500/40 transition-colors">
+            <div class="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400">
+              <GraduationCap class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">KGP Srinagar</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Diploma in Information Technology</p>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                Currently excelling in 5th-semester subjects, covering computer architecture, networks, databases, and software fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl flex items-start gap-4 hover:border-sky-500/40 transition-colors">
+            <div class="p-3 rounded-2xl bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400">
+              <Code class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Front-End Focus</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Modern Web Standards</p>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                Crafting clean user interfaces using Astro, Tailwind CSS, ES6+ JavaScript, and responsive design systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl flex items-start gap-4 hover:border-emerald-500/40 transition-colors">
+            <div class="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400">
+              <CircleCheck class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Practical Execution</h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Building in Public</p>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                Every coursework concept is reinforced through hands-on code: interactive validation forms, portfolio sites, and components.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills & Toolkit Section -->
+    <section id="skills" class="scroll-mt-24 space-y-10" aria-labelledby="skills-title">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+            <Code class="w-4 h-4" />
+            Skills & Capabilities
+          </span>
+          <h2 id="skills-title" class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-1">
+            Growing my developer toolkit.
+          </h2>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
+          A foundation-first approach prioritizing robust understanding of core web primitives.
+        </p>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {
+          skills.map((skill) => {
+            const Icon = skill.icon;
+            return (
+              <div class="glass-card p-6 rounded-3xl hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-950/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-zinc-700 dark:text-zinc-300">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/40 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
+                      {skill.tag}
+                    </span>
+                  </div>
+                  <h3 class="font-bold text-lg text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {skill.name}
+                  </h3>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider font-semibold mt-0.5">
+                    {skill.category}
+                  </p>
+                  <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+                    {skill.desc}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
+                  <span>Proficiency</span>
+                  <span class="font-medium text-indigo-600 dark:text-indigo-400">Active Daily</span>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- Selected Projects Section -->
+    <section id="work" class="scroll-mt-24 space-y-12" aria-labelledby="work-title">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+            <Layers class="w-4 h-4" />
+            Portfolio Showcase
+          </span>
+          <h2 id="work-title" class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-1">
+            Featured projects & demos.
+          </h2>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
+          Hands-on applications documenting the step from page structures to dynamic interactivity.
+        </p>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Project 1: Student Registration System (Featured Big Card) -->
+        <div class="lg:col-span-7 glass-card rounded-3xl overflow-hidden hover:border-indigo-500/40 transition-all duration-300 flex flex-col group">
+          <a href="/projects/registration/" class="block overflow-hidden relative aspect-[16/10] bg-zinc-100 dark:bg-zinc-800/80">
+            <Image
+              src={registrationImage}
+              alt="Student registration form application preview"
+              widths={[480, 760, 1100]}
+              sizes="(max-width: 768px) 100vw, 60vw"
+              format="webp"
+              quality={85}
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-indigo-600/90 text-white text-xs font-bold tracking-wide shadow-md backdrop-blur-md">
+                Featured Project
+              </span>
+            </div>
+            <div class="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 dark:bg-zinc-900/90 text-zinc-900 dark:text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+              <ArrowUpRight class="w-5 h-5" />
+            </div>
+          </a>
+
+          <div class="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-5">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                <span>01</span>
+                <span>&bull;</span>
+                <span>Web Application / Interactive Form</span>
+              </div>
+              <h3 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mt-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Student Registration Portal
+              </h3>
+              <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-2.5 leading-relaxed">
+                A full-featured student intake and registration system with real-time field validation, semantic input grouping, responsive grid architecture, and immediate interactive feedback.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">HTML5</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">Tailwind CSS</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">JavaScript DOM</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">Client Validation</span>
+              </div>
+
+              <div class="pt-2 flex items-center gap-3">
+                <a
+                  href="/projects/registration/"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-md shadow-indigo-600/20 active:scale-95 transition-all"
+                >
+                  <span>Launch Live Demo</span>
+                  <ExternalLink class="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Resume & Portfolio Platform -->
+        <div class="lg:col-span-5 glass-card rounded-3xl overflow-hidden hover:border-indigo-500/40 transition-all duration-300 flex flex-col group">
+          <a href="/resume/" class="block overflow-hidden relative aspect-[16/10] bg-zinc-100 dark:bg-zinc-800/80">
+            <Image
+              src={resumeImage}
+              alt="Personal resume website project preview"
+              widths={[400, 700]}
+              sizes="(max-width: 768px) 100vw, 40vw"
+              format="webp"
+              quality={85}
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-zinc-900/80 text-white text-xs font-bold tracking-wide shadow-md backdrop-blur-md">
+                Project 02
+              </span>
+            </div>
+            <div class="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 dark:bg-zinc-900/90 text-zinc-900 dark:text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+              <ArrowUpRight class="w-5 h-5" />
+            </div>
+          </a>
+
+          <div class="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-5">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                <span>02</span>
+                <span>&bull;</span>
+                <span>Profile & Print Platform</span>
+              </div>
+              <h3 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mt-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Interactive Resume System
+              </h3>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-2.5 leading-relaxed">
+                A print-ready digital resume and profile built with static-first performance, theme-adaptive styling, print CSS optimization, and smooth Astro View Transitions.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">Astro 7</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">Tailwind CSS</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium">View Transitions</span>
+              </div>
+
+              <div class="pt-2 flex items-center gap-3">
+                <a
+                  href="/resume/"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-semibold shadow-md active:scale-95 transition-all"
+                >
+                  <span>View Full Resume</span>
+                  <ArrowRight class="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Learning Journey & Milestones Section -->
+    <section id="journey" class="scroll-mt-24 space-y-12" aria-labelledby="journey-title">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+            <Calendar class="w-4 h-4" />
+            Milestones
+          </span>
+          <h2 id="journey-title" class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-1">
+            Where I am & where I am headed.
+          </h2>
+        </div>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
+          A steady trajectory from computer fundamentals toward full-stack engineering.
+        </p>
+      </div>
+
+      <!-- Timeline Cards -->
+      <div class="relative pl-6 sm:pl-8 border-l-2 border-indigo-200 dark:border-indigo-900/60 space-y-10 sm:space-y-12">
+        {
+          milestones.map((item) => (
+            <div class="relative group">
+              <!-- Timeline Dot -->
+              <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-4 border-white dark:border-zinc-950 bg-indigo-600 group-hover:scale-125 transition-transform shadow-md"></div>
+
+              <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-3 hover:border-indigo-500/40 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50">
+                      {item.phase}
+                    </span>
+                    <span class="text-xs text-zinc-400 font-medium">{item.period}</span>
+                  </div>
+                  <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{item.place}</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Interactive Contact Section -->
+    <section id="contact" class="scroll-mt-24 space-y-12 pb-12" aria-labelledby="contact-title">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl shadow-xl border border-zinc-200 dark:border-zinc-800 relative overflow-hidden">
+        
+        <!-- Ambient decorative corner glow -->
+        <div class="absolute -top-24 -right-24 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-600/15 blur-3xl rounded-full pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 relative z-10">
+          
+          <!-- Left Info Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+              <Send class="w-4 h-4" />
+              Let's Connect
+            </span>
+            <h2 id="contact-title" class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 leading-tight">
+              Have an opportunity or project? <br />
+              <span class="text-indigo-600 dark:text-indigo-400">Let's talk.</span>
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              I am open to internships, junior developer roles, and open-source collaborations. Feel free to reach out directly via email or LinkedIn.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <div class="flex items-center gap-3">
+                <div class="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400">
+                  <Mail class="w-5 h-5" />
+                </div>
+                <div>
+                  <p class="text-xs text-zinc-500">Email Address</p>
+                  <a href="mailto:misbamushtaq485@gmail.com" class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                    misbamushtaq485@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="p-3 rounded-2xl bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400">
+                  <LinkedInIcon class="w-5 h-5" />
+                </div>
+                <div>
+                  <p class="text-xs text-zinc-500">LinkedIn Profile</p>
+                  <a href="https://www.linkedin.com/in/misbajaan" target="_blank" rel="noreferrer" class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-sky-600 dark:hover:text-sky-400 transition-colors inline-flex items-center gap-1">
+                    <span>linkedin.com/in/misbajaan</span>
+                    <ExternalLink class="w-3.5 h-3.5 opacity-70" />
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400">
+                  <MapPin class="w-5 h-5" />
+                </div>
+                <div>
+                  <p class="text-xs text-zinc-500">Location</p>
+                  <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    Srinagar, Jammu & Kashmir, India
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Interactive Form Column -->
+          <div class="lg:col-span-7">
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                  <label for="contact-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                    Your Name *
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="e.g. Jane Doe"
+                    class="w-full px-4 py-3 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                  />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="contact-email" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                    Your Email *
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="jane@example.com"
+                    class="w-full px-4 py-3 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                  />
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="contact-subject" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Subject *
+                </label>
+                <input
+                  id="contact-subject"
+                  name="subject"
+                  type="text"
+                  required
+                  placeholder="Internship opportunity / Project inquiry"
+                  class="w-full px-4 py-3 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all"
+                />
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="contact-message" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Message *
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows="4"
+                  required
+                  placeholder="Share details about what you'd like to collaborate on..."
+                  class="w-full px-4 py-3 rounded-2xl bg-zinc-50/80 dark:bg-zinc-800/70 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-md shadow-indigo-600/30 active:scale-95 transition-all group"
+                >
+                  <span>Launch Email Draft</span>
+                  <Send class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                  Opens directly in your preferred email client.
+                </p>
+              </div>
+
+              <div id="contact-feedback" class="hidden p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 text-emerald-800 dark:text-emerald-300 text-xs sm:text-sm">
+                Email draft prepared! Opening your mail client...
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  function setupPageScripts() {
+    // Copy email button
+    const copyBtn = document.getElementById("copy-email-btn");
+    const copyIcon = document.getElementById("copy-icon");
+    const checkIcon = document.getElementById("check-icon");
+    const copyText = document.getElementById("copy-text");
+
+    if (copyBtn && !copyBtn.hasAttribute("data-bound")) {
+      copyBtn.setAttribute("data-bound", "true");
+      copyBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText("misbamushtaq485@gmail.com");
+          copyIcon?.classList.add("hidden");
+          checkIcon?.classList.remove("hidden");
+          if (copyText) copyText.textContent = "Copied!";
+          setTimeout(() => {
+            copyIcon?.classList.remove("hidden");
+            checkIcon?.classList.add("hidden");
+            if (copyText) copyText.textContent = "Copy email";
+          }, 2500);
+        } catch (err) {
+          window.location.href = "mailto:misbamushtaq485@gmail.com";
+        }
+      });
+    }
+
+    // Contact form handler
+    const contactForm = document.getElementById("contact-form") as HTMLFormElement | null;
+    const feedback = document.getElementById("contact-feedback");
+
+    if (contactForm && !contactForm.hasAttribute("data-bound")) {
+      contactForm.setAttribute("data-bound", "true");
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(contactForm);
+        const name = String(data.get("name") || "");
+        const email = String(data.get("email") || "");
+        const subject = String(data.get("subject") || `Portfolio message from ${name}`);
+        const message = String(data.get("message") || "");
+
+        const body = encodeURIComponent(
+          `Hi Misba,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`
+        );
+
+        if (feedback) {
+          feedback.classList.remove("hidden");
+        }
+
+        window.location.href = `mailto:misbamushtaq485@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", setupPageScripts);
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setupPageScripts();
+  }
+</script>

@@ -1,0 +1,107 @@
+---
+import { Sun, Moon, Monitor } from "@lucide/astro";
+---
+
+<div class="theme-switcher relative inline-flex items-center p-1 rounded-full bg-zinc-200/80 dark:bg-zinc-800/80 border border-zinc-300/80 dark:border-zinc-700/80 backdrop-blur-md shadow-inner transition-colors" role="radiogroup" aria-label="Theme selection">
+  <button
+    type="button"
+    class="theme-btn relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-200"
+    data-theme-value="light"
+    aria-label="Light mode"
+    title="Light mode"
+  >
+    <Sun class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="theme-btn relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-200"
+    data-theme-value="dark"
+    aria-label="Dark mode"
+    title="Dark mode"
+  >
+    <Moon class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="theme-btn relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-200"
+    data-theme-value="system"
+    aria-label="System mode"
+    title="System mode"
+  >
+    <Monitor class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+  </button>
+</div>
+
+<script>
+  function setupThemeToggle() {
+    const container = document.querySelector(".theme-switcher");
+    if (!container) return;
+
+    const currentStored = localStorage.getItem("portfolio-theme") || "dark";
+    
+    function updateActiveState(val: string) {
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        const btnVal = btn.getAttribute("data-theme-value");
+        if (btnVal === val) {
+          btn.classList.add("bg-white", "dark:bg-zinc-700", "text-indigo-600", "dark:text-indigo-300", "shadow-sm");
+          btn.classList.remove("text-zinc-600", "dark:text-zinc-400");
+          btn.setAttribute("aria-checked", "true");
+        } else {
+          btn.classList.remove("bg-white", "dark:bg-zinc-700", "text-indigo-600", "dark:text-indigo-300", "shadow-sm");
+          btn.classList.add("text-zinc-600", "dark:text-zinc-400");
+          btn.setAttribute("aria-checked", "false");
+        }
+      });
+    }
+
+    // Always keep buttons in sync with stored preference
+    updateActiveState(currentStored);
+
+    // Prevent double listener bindings
+    if (container.hasAttribute("data-theme-bound")) return;
+    container.setAttribute("data-theme-bound", "true");
+
+    function setTheme(themeMode: string) {
+      localStorage.setItem("portfolio-theme", themeMode);
+      
+      const changeDOM = () => {
+        let effective = themeMode;
+        if (themeMode === "system") {
+          effective = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = effective;
+        document.documentElement.classList.toggle("dark", effective === "dark");
+        updateActiveState(themeMode);
+      };
+
+      if (!document.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        changeDOM();
+      } else {
+        document.startViewTransition(() => {
+          changeDOM();
+        });
+      }
+    }
+
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-theme-value");
+        if (val) setTheme(val);
+      });
+    });
+
+    // Listen to system preference changes if 'system' is chosen
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      if (localStorage.getItem("portfolio-theme") === "system") {
+        const newTheme = e.matches ? "dark" : "light";
+        document.documentElement.dataset.theme = newTheme;
+        document.documentElement.classList.toggle("dark", newTheme === "dark");
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupThemeToggle);
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setupThemeToggle();
+  }
+</script>
